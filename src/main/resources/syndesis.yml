@@ -1,0 +1,12 @@
+---
+flows:
+- steps:
+  - kind: endpoint
+    uri: twitter-mention
+  - kind: filter
+    expression: ${body.text} contains 'Demo Time'
+    steps:
+    - kind: endpoint
+      uri: atlas:mapping-step-3.json
+    - kind: endpoint
+      uri: salesforce-upsert-contact
